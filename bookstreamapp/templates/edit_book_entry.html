@@ -1,0 +1,28 @@
+{% extends 'bookstreamheader.html' %}
+{% block content %}
+  <section class="about_section layout_padding long_section">
+    <div class="container">
+      <div class="row"> 
+	     <div class="col-md-12">
+		<center><div class="detail-box"><h2>Update Book Data</h2><br></div></center>
+<center>
+<div class="detail-box">
+<form method="post" enctype="multipart/form-data">
+	<div class="form-group">
+    {% csrf_token %}
+    {{ form.as_p }}
+	</div>
+
+	<div class="bookstreambutton"> <button type="submit">Update</button></div><br>
+	<div class="btn-box"><a href="{% url 'book_details' object.pk %}" class="btn2">Cancel</a></div>	
+
+
+</form>
+</div>
+</center>
+        </div>
+	  </div>
+    </div>
+  </section>
+</div>
+{% endblock %}

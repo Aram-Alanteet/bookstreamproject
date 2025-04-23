@@ -1,0 +1,47 @@
+{% extends 'bookstreamheader.html' %}
+{% block content %}
+
+
+  <section class="about_section layout_padding long_section">
+    <div class="container">
+      <div class="row"> 
+	     <div class="col-md-12">
+		<center><div class="detail-box"><h2>Book List</h2><br></div></center>	
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Logo</th>
+					<th>Title</th>
+					<th>Author</th>
+					<th>Genre</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for bk in list_of_books %}
+				<tr>
+				<td>
+                <img src="{{ bk.blogo.url }}" style="width:40px; height:60px;">
+				</td>
+					<td>{{ bk.btitle }}</td>
+					<td>{{ bk.bauthor }}</td>
+					<td>{{ bk.bgenre }}</td>
+					<td>
+					 <div class="detail-box">
+						<a href="{% url 'book_details' bk.pk %}" >Book Details</a>
+						<a href="{% url 'edit_book_entry' bk.pk %}">Update</a>
+						<a href="{% url 'drop_book_entry' bk.pk %}">Remove</a>
+					</div>
+					</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>	 
+ 
+
+        </div>
+	  </div>
+    </div>
+  </section>
+</div>
+{% endblock %}

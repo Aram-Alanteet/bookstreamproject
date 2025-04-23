@@ -1,0 +1,35 @@
+{% extends 'bookstreamheader.html' %}
+{% block content %}
+  <section class="about_section layout_padding long_section">
+    <div class="container">
+      <div class="row"> 
+	     <div class="col-md-12">
+		<center><div class="detail-box"><h2>Book Description</h2><br></div></center>	
+<table class="table">
+			<tr><th>Logo</th><td><img src="{{ book.blogo.url }}" style="width:50px; height:80px;"></td></tr>
+			<tr><th>Title</th><td>{{ book.btitle }}</td></tr>
+            <tr><th>Author</th><td>{{ book.bauthor }}</td></tr>
+            <tr><th>Genre</th><td>{{ book.bgenre }}</td></tr>
+            <tr><th>Description</th><td>{{ book.bdescription }}</td></tr>
+</table>
+<center>
+<div class="detail-box">
+{% if user in book.bk_requesters.all %}
+    <a href="{% url 'cancel_request' book.pk %}" >Cancel Reservation</a>
+{% else %}
+    <a href="{% url 'request_book' book.pk %}" >Request BookTable</a>
+{% endif %}
+
+<a href="{% url 'edit_book_entry' book.pk %}" >Update</a>
+<a href="{% url 'drop_book_entry' book.pk %}" >Remove</a>
+<a href="{% url 'list_of_books' %}" >Back</a>
+</div>
+</center>	 
+ 
+
+        </div>
+	  </div>
+    </div>
+  </section>
+</div>
+{% endblock %}

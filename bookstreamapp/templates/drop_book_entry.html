@@ -1,0 +1,28 @@
+{% extends 'bookstreamheader.html' %}
+{% block content %}
+  <section class="about_section layout_padding long_section">
+    <div class="container">
+      <div class="row"> 
+	     <div class="col-md-12">
+		<center><div class="detail-box"><h2>Delete Book</h2><br></div></center>
+<center>
+<div class="detail-box">
+<center>
+<img src="{{ object.blogo.url }}" style="width:50px; height:80px;">
+</center>
+<br>
+<p style="color:#000;">Are you sure to drop the book <strong>"{{ object.btitle }}"</strong> from our database?</p>
+<form method="post">
+    {% csrf_token %}
+	<div class="bookstreambutton"> <button type="submit">Confirm</button></div><br>
+	<div class="bookstreambutton"><a href="{% url 'book_details' object.pk %}">Cancel &nbsp;</a></div>		
+	
+</form>
+</div>
+</center>
+        </div>
+	  </div>
+    </div>
+  </section>
+</div>
+{% endblock %}
